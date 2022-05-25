@@ -32,7 +32,7 @@ body{
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-    height: 5%;
+    height: 50px;
 }
 .info{
     display: flex;
@@ -57,12 +57,12 @@ body{
 /* NOTIFICATIONS */
 .banner-notification{
     background-color: #8edafc;
-    height: 5%;
+    height: 50px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     gap: 10px;
-    padding-left: 2%;
+    padding: 10px 20px;
 }
 .notification{
     padding: 5px 10px;
@@ -92,10 +92,11 @@ body{
     background-color: #fafafa;
     display: flex;
     flex-flow: column nowrap;
+    overflow: hidden;
 }
 /* SEARCH */
 .search{
-    height: 5%;
+    height: 40px;
     background-color: #ffffff;
     color: #b1b1b1;
     display: flex;
@@ -120,7 +121,7 @@ body{
 .chats{
     display: flex;
     flex-flow: column nowrap;
-    height: 95%;
+    overflow: auto;
 }
 .single-chat{
     padding: 5px;
@@ -144,11 +145,14 @@ body{
 }
 /* RIGHT COLUMN */
 .right-column{
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100%;
     width: 60%;
 }
 /* CHAT HEADER*/
 .chat-header{
-    height: 5%;
+    height: 50px;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
@@ -181,17 +185,33 @@ body{
     background-image: url(../img/mine.jpg);
     background-repeat: repeat;
     background-size: 70%;
-    height: 90%;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 10px;
+    padding: 20px;
 }
-.message-sent{
+.message{
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 40%;
+    align-items: center;
+    justify-content: space-between;
+}
+.sent{
     background-color: #d5f9ba;
+    align-self: flex-end;
 }
-.message-received{
+.received{
     background-color: #ffffff;
+    align-self: flex-start;
 }
 /* CHAT-FOOTER*/
 .chat-footer{
-    height: 5%;
+    height: 50px;
     display: flex;
     flex-flow: row nowrap;
     background-color: #eaeaea;

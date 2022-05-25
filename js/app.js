@@ -163,6 +163,12 @@ let app = new Vue({
                     }
                 ],
             }
-        ]
+        ],
+        index: 0,
+    },
+    methods : {
+        printChat(i){
+            this.index = i
+        }
     }
 })

@@ -165,10 +165,21 @@ let app = new Vue({
             }
         ],
         index: 0,
+        DateTime : luxon.DateTime
     },
     methods : {
         printChat(i){
             this.index = i
+        },
+        getLastMessage(contact){
+            return contact.messages[contact.messages.length - 1].message;
+        },
+        getLastMessageHour(contact){
+            const message = contact.messages[contact.messages.length - 1];
+            return this.DateTime.fromFormat(message.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
+        },
+        getChatMessageHour(date){
+            return this.DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
         }
     }
 })

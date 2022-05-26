@@ -86,7 +86,7 @@ let app = new Vue({
                 ],
             },
             {
-                name: 'Alessandro L.',
+                name: 'Alessandra L.',
                 avatar: '_5',
                 visible: true,
                 messages: [
@@ -165,7 +165,8 @@ let app = new Vue({
             }
         ],
         index: 0,
-        DateTime : luxon.DateTime
+        DateTime : luxon.DateTime,
+        textMessage : ""
     },
     methods : {
         printChat(i){
@@ -175,11 +176,27 @@ let app = new Vue({
             return contact.messages[contact.messages.length - 1].message;
         },
         getLastMessageHour(contact){
-            const message = contact.messages[contact.messages.length - 1];
+            let msgReceived = 1;
+            let message = contact.messages[contact.messages.length - msgReceived];
+            while (message.status === 'sent'){
+                msgReceived++;
+                message = contact.messages[contact.messages.length - msgReceived]
+            }
             return this.DateTime.fromFormat(message.date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
         },
         getChatMessageHour(date){
             return this.DateTime.fromFormat(date, "dd/MM/yyyy HH:mm:ss").toFormat("HH:mm");
+        },
+        pushMessage(){
+            if (!(this.textMessage.value == "")) {
+                const now = this.DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss");
+                this.contacts[this.index].messages.push({date: now,message: this.textMessage.trim(), status: 'sent'});
+                this.textMessage = "";
+                setTimeout(this.getReply(now), 1000);
+            }
+        },
+        getReply(now){
+            this.contacts[this.index].messages.push({date: now,message: "Okay", status: 'received'});
         }
     }
 })

@@ -62,10 +62,10 @@
         <div class="right-column">
             <div class="chat-header">
                 <div class="person">
-                    <img src="img/avatar_1.jpg" alt="">
+                    <img :src="`img/avatar${contacts[index].avatar}.jpg`" alt="">
                     <div class="person-info">
-                        <span class="user-name">Michele</span>
-                        <span class="last-access">Ultimo accesso oggi alle 12:00</span>
+                        <span class="user-name">{{contacts[index].name}}</span>
+                        <span class="last-access">Ultimo accesso oggi alle {{getLastMessageHour(contacts[index])}}</span>
                     </div>
                 </div>
                 <div class="actions">
@@ -82,7 +82,7 @@
             </div>
             <div class="chat-footer">
                 <a href="#"><i class="fa-regular fa-face-smile"></i></a>
-                <input type="text" name="message-box" id="message-box" placeholder="Scrivi un messaggio">
+                <input type="text" name="message-box" id="message-box" placeholder="Scrivi un messaggio" @keyup.enter="pushMessage()" v-model="textMessage">
                 <a href="#"><i class="fa-solid fa-microphone"></i></a>
             </div>
         </div>

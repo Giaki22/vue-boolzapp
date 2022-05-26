@@ -191,6 +191,7 @@ body{
     flex-flow: column nowrap;
     gap: .625rem;
     padding: 1.25rem;
+    overflow-y: auto;
 }
 .message{
     display: flex;
@@ -212,7 +213,7 @@ body{
 }
 /* CHAT-FOOTER*/
 .chat-footer{
-    height: 3.125rem;
+    min-height: 3.125rem;
     display: flex;
     flex-flow: row nowrap;
     background-color: #eaeaea;

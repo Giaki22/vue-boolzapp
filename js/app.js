@@ -166,7 +166,8 @@ let app = new Vue({
         ],
         index: 0,
         DateTime : luxon.DateTime,
-        textMessage : ""
+        textMessage : "",
+        searchUser : ""
     },
     methods : {
         printChat(i){
@@ -192,11 +193,13 @@ let app = new Vue({
                 const now = this.DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss");
                 this.contacts[this.index].messages.push({date: now,message: this.textMessage.trim(), status: 'sent'});
                 this.textMessage = "";
-                setTimeout(this.getReply(now), 1000);
+                this.getReply(now);
             }
         },
         getReply(now){
-            this.contacts[this.index].messages.push({date: now,message: "Okay", status: 'received'});
+            setTimeout(() => {
+                this.contacts[this.index].messages.push({date: now,message: "Okay", status: 'received'}); 
+            }, 1000);
         }
     }
 })

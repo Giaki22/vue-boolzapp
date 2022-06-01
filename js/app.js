@@ -193,12 +193,12 @@ let app = new Vue({
                 const now = this.DateTime.now().toFormat("dd/MM/yyyy HH:mm:ss");
                 this.contacts[this.index].messages.push({date: now,message: this.textMessage.trim(), status: 'sent'});
                 this.textMessage = "";
-                this.getReply(now);
+                this.getReply(now, this.index);
             }
         },
-        getReply(now){
+        getReply(now, index){
             setTimeout(() => {
-                this.contacts[this.index].messages.push({date: now,message: "Okay", status: 'received'}); 
+                this.contacts[index].messages.push({date: now,message: "Okay", status: 'received'}); 
             }, 1000);
         }
     }
